@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meeting Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🎙️</span>
+                    <h1>AI Meeting Assistant</h1>
+                </div>
+                <div class="status-indicator" id="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Disconnected</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Panel: Transcript -->
+            <section class="panel transcript-panel">
+                <div class="panel-header">
+                    <h2>📝 Live Transcript</h2>
+                    <div class="panel-actions">
+                        <button class="btn btn-secondary btn-sm" id="btn-clear">Clear</button>
+                    </div>
+                </div>
+                <div class="panel-content" id="transcript-container">
+                    <div class="empty-state">
+                        <p>Start the demo to see live transcription</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: AI Insights -->
+            <section class="panel insights-panel">
+                <!-- Controls -->
+                <div class="controls-section">
+                    <button class="btn btn-primary btn-lg" id="btn-toggle-demo">
+                        <span class="btn-icon">▶️</span>
+                        <span class="btn-text">Start Demo</span>
+                    </button>
+                </div>
+
+                <!-- Current Topic -->
+                <div class="insight-card">
+                    <div class="card-header">
+                        <h3>🎯 Current Topic</h3>
+                        <button class="btn btn-ghost btn-sm" id="btn-refresh-topic">Refresh</button>
+                    </div>
+                    <div class="card-content" id="current-topic">
+                        <p class="placeholder">No active discussion</p>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="insight-card">
+                    <div class="card-header">
+                        <h3>📋 Meeting Summary</h3>
+                        <button class="btn btn-ghost btn-sm" id="btn-generate-summary">Generate</button>
+                    </div>
+                    <div class="card-content" id="meeting-summary">
+                        <p class="placeholder">Click 'Generate' to create a summary</p>
+                    </div>
+                </div>
+
+                <!-- Q&A -->
+                <div class="insight-card qa-card">
+                    <div class="card-header">
+                        <h3>💬 Ask a Question</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="input-group">
+                            <input type="text" id="question-input" placeholder="What has been decided so far?">
+                            <button class="btn btn-primary" id="btn-ask">Ask</button>
+                        </div>
+                        <div class="answer-container" id="answer-container">
+                            <p class="placeholder">Ask a question about the meeting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="btn btn-ghost" id="btn-decisions">What was decided?</button>
+                    <button class="btn btn-ghost" id="btn-actions">Action items?</button>
+                    <button class="btn btn-ghost" id="btn-topics">Topics discussed?</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with LiveKit, Deepgram & OpenAI</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
